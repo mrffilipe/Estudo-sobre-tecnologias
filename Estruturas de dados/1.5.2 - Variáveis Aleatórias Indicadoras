@@ -1,0 +1,97 @@
+### **5.2 Variáveis Aleatórias Indicadoras**
+
+#### **Definição**
+Uma **variável aleatória indicadora** é uma variável que assume o valor \( 1 \) quando um evento específico ocorre e \( 0 \) caso contrário. Elas são amplamente utilizadas na análise probabilística para modelar eventos simples e calcular expectativas.
+
+Matematicamente, uma variável indicadora \( I\{A\} \) é definida como:
+\[
+I\{A\} =
+\begin{cases}
+1 & \text{se o evento } A \text{ ocorre}, \\
+0 & \text{caso contrário}.
+\end{cases}
+\]
+
+---
+
+### **Propriedades Fundamentais**
+1. **Esperança Matemática**:
+   - Para uma variável indicadora \( I\{A\} \), a expectativa é a probabilidade de \( A \):
+   \[
+   \mathbb{E}[I\{A\}] = \Pr[A].
+   \]
+
+2. **Soma de Variáveis Indicadoras**:
+   - A soma de variáveis indicadoras representa o número total de vezes que os eventos associados ocorrem:
+   \[
+   X = \sum_{i=1}^n I\{A_i\}.
+   \]
+   A expectativa de \( X \) é:
+   \[
+   \mathbb{E}[X] = \sum_{i=1}^n \Pr[A_i].
+   \]
+
+---
+
+### **Exemplo 1: Moeda**
+Considere o lançamento de uma moeda justa \( n \) vezes. O número de caras é dado por:
+\[
+X = \sum_{i=1}^n I\{\text{cara no i-ésimo lançamento}\}.
+\]
+- Para cada \( I\{\text{cara}\} \), \( \mathbb{E}[I\{\text{cara}\}] = \frac{1}{2} \).
+- Então:
+\[
+\mathbb{E}[X] = \sum_{i=1}^n \frac{1}{2} = \frac{n}{2}.
+\]
+
+---
+
+### **Exemplo 2: Problema da Contratação**
+No problema da contratação, \( I_i \) indica se o \( i \)-ésimo candidato é contratado:
+\[
+I_i =
+\begin{cases}
+1 & \text{se o candidato } i \text{ é o melhor até o momento}, \\
+0 & \text{caso contrário}.
+\end{cases}
+\]
+O número total de contratações \( X \) é:
+\[
+X = \sum_{i=1}^n I_i.
+\]
+A expectativa de \( X \) é:
+\[
+\mathbb{E}[X] = \sum_{i=1}^n \mathbb{E}[I_i] = \sum_{i=1}^n \Pr[\text{o candidato } i \text{ é o melhor}].
+\]
+A probabilidade de o \( i \)-ésimo candidato ser o melhor é \( \frac{1}{i} \), então:
+\[
+\mathbb{E}[X] = \sum_{i=1}^n \frac{1}{i} = H_n,
+\]
+onde \( H_n \) é o número harmônico, aproximadamente \( \ln n \).
+
+---
+
+### **Exemplo 3: Algoritmo Randomizado**
+No **Randomized QuickSort**, o número esperado de comparações pode ser analisado usando variáveis indicadoras.
+
+Defina \( I_{i,j} \) como:
+\[
+I_{i,j} =
+\begin{cases}
+1 & \text{se } A[i] \text{ e } A[j] \text{ são comparados}, \\
+0 & \text{caso contrário}.
+\end{cases}
+\]
+O número total de comparações é:
+\[
+X = \sum_{1 \leq i < j \leq n} I_{i,j}.
+\]
+A probabilidade de \( I_{i,j} = 1 \) é \( \frac{2}{j-i+1} \). Assim:
+\[
+\mathbb{E}[X] = \sum_{1 \leq i < j \leq n} \frac{2}{j-i+1} = O(n \log n).
+\]
+
+---
+
+### **Resumo**
+As variáveis aleatórias indicadoras simplificam a análise probabilística de algoritmos, convertendo problemas de contagem em cálculos de expectativa. Elas são especialmente úteis para modelar e analisar eventos discretos, como contratações, comparações ou sucessos em experimentos aleatórios.
